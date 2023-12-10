@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FFmpeg Resolver</title>
+    <script type="module" src="/ffmpeg.js" defer></script>
+    <style>
+        :root {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <h3>FFmpeg Resolver</h3>
+    </div>
+    <div id="info-table">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>FFmpeg</td>
+                    <td id="ffmpeg-info-display"></td>
+                </tr>
+                <tr>
+                    <td>FFprobe</td>
+                    <td id="ffprobe-info-display"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button id="getffmpeg">Get ffmpeg</button>
+    <button id="close">Close</button>
+
+</body>
+
+</html>

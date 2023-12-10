@@ -1,0 +1,91 @@
+{
+  "build": {
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "",
+    "devPath": "../src",
+    "distDir": "../src",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "VVConvert",
+    "version": "0.0.6"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true,
+        "sidecar": true
+      },
+      "dialog": {
+        "all": true
+      },
+      "fs": {
+        "all": true
+      },
+      "protocol": {
+        "all": true
+      },
+      "http": {
+        "all": true
+      }
+
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "com.acarter.vvconvert",
+      "publisher": "Alec Carter",
+      "category": "Utility",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "deb": {
+        "files": {
+          "/usr/lib/vvconvert/libvvenc.so.1.9.1": "lib/libvvenc.so.1.9.1",
+          "/usr/lib/vvconvert/libvvenc.so.1.9": "lib/libvvenc.so.1.9",
+          "/usr/lib/vvconvert/libvvenc.so": "lib/libvvenc.so"
+        }
+      },
+      "macOS": {
+        "frameworks": ["lib/libvvenc.1.9.1.dylib", "lib/libvvenc.1.9.dylib", "lib/libvvenc.dylib"]
+      },
+      "windows": {
+        "webviewInstallMode": {
+          "type": "embedBootstrapper"
+        },
+        "wix": {
+          "fragmentPaths": ["wix/registry.wxs"],
+          "componentRefs": ["MyDllComponent"]
+        }
+      }
+    },
+    "updater": {
+      "active": true,
+      "endpoints": [
+        "https://vvconvert.app/updater.php"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDJEQTZFQTNDNzI4RUI4ODQKUldTRXVJNXlQT3FtTFJxclNKM0RjSGx6Y3lGTGJoTnB6blpaNkxQdVZzZDgrREM4NkhCNzlMV2QK"
+    },
+    "security": {
+      "csp": "default-src 'self'; media-src 'self' asset: https://asset.localhost"
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "VVConvert",
+        "width": 920,
+        "height": 740,
+        "minHeight": 200,
+        "minWidth": 700
+      }
+    ]
+  }
+}

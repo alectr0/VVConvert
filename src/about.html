@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About VVConvert</title>
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        font-size: small;
+      }
+
+      .container {
+        max-width: 100%;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .app-info {
+        border-bottom: 1px solid #ccc;
+      }
+
+      .app-title {
+        display: flex;
+        align-items: center;
+      }
+
+      .app-title h1 {
+        font-size: 36px;
+        margin: 0 0.6rem;
+      }
+
+      .app-title img {
+        max-width: 4rem;
+      }
+
+      .dynamic-info h2,
+      .license-info h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .license-info pre {
+        background-color: #eee;
+        padding: 15px;
+        overflow-x: auto;
+        text-align: left;
+        white-space: pre-line;
+      }
+
+      .button-row a:not(:first-child) {
+        margin-left: 0.4rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="app-info">
+        <div class="app-title">
+          <img src="assets/vvconvert-logo.png" />
+          <h1>VVConvert</h1>
+        </div>
+        <p>Version: <span id="app-version">Loading...</span></p>
+      </div>
+
+      <div class="dynamic-info">
+        <h3>System Information</h3>
+        <p>VVC Version: <span id="vvc-version">Loading...</span></p>
+        <p>FFmpeg Version: <span id="ffmpeg-version">Loading...</span></p>
+      </div>
+
+      <div class="license-info">
+        <h3>VVConvert License</h3>
+        <pre id="license-text">
+            MIT License
+
+            Copyright (c) 2023 Alec Carter
+
+            Permission is hereby granted, free of charge, to any person obtaining a copy
+            of this software and associated documentation files (the "Software"), to deal
+            in the Software without restriction, including without limitation the rights
+            to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+            copies of the Software, and to permit persons to whom the Software is
+            furnished to do so, subject to the following conditions:
+
+            The above copyright notice and this permission notice shall be included in all
+            copies or substantial portions of the Software.
+            </pre
+        >
+        <div class="button-row">
+          <button id="vvconvertWebsite">VVConvert Website</button>
+          <button id="vvconvertDisclaimer">Disclaimer</button>
+          <button id="donate">Donate</button>
+        </div>
+
+        <h3>VVenC License</h3>
+        <pre id="license-text">
+                The Clear BSD License
+
+                Copyright (c) 2019-2023, Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V. & The VVenC Authors.
+                All rights reserved.
+
+                Redistribution and use in source and binary forms, with or without modification,
+                are permitted (subject to the limitations in the disclaimer below) provided that
+                the following conditions are met:
+
+                    * Redistributions of source code must retain the above copyright notice,
+                    this list of conditions and the following disclaimer.
+
+                    * Redistributions in binary form must reproduce the above copyright
+                    notice, this list of conditions and the following disclaimer in the
+                    documentation and/or other materials provided with the distribution.
+
+                    * Neither the name of the copyright holder nor the names of its
+                    contributors may be used to endorse or promote products derived from this
+                    software without specific prior written permission.
+
+                NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY
+                THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+                CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+                LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+                PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+                CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+                EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+                PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+                BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+                IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+                ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+                POSSIBILITY OF SUCH DAMAGE.
+            </pre
+        >
+        <button id="vvencLicense">VVenC License</button>
+        <h3>FFmpeg License</h3>
+        <button id="ffmpegLicense">FFmpeg License</button>
+      </div>
+    </div>
+
+    <script>
+      const { listen } = window.__TAURI__.event;
+      const { invoke } = window.__TAURI__.tauri;
+      const { open } = window.__TAURI__.shell;
+      // const { open } = window.__TAURI__.open;
+      window.addEventListener("DOMContentLoaded", () => {
+        updateVersions();
+        document
+          .getElementById("vvencLicense")
+          .addEventListener("click", function () {
+            openExtLink(
+              "https://github.com/fraunhoferhhi/vvenc/blob/master/LICENSE.txt"
+            );
+          });
+        document
+          .getElementById("ffmpegLicense")
+          .addEventListener("click", function () {
+            openExtLink("https://ffmpeg.org/legal.html");
+          });
+        document
+          .getElementById("vvconvertWebsite")
+          .addEventListener("click", function () {
+            openExtLink("https://vvconvert.app");
+          });
+        document
+          .getElementById("vvconvertDisclaimer")
+          .addEventListener("click", function () {
+            openExtLink("https://vvconvert.app/disclaimer/");
+          });
+        document
+          .getElementById("donate")
+          .addEventListener("click", function () {
+            openExtLink("https://vvconvert.app/donate");
+          });
+      });
+      async function openExtLink(url) {
+        await open(url);
+      }
+      async function updateVersions() {
+        const appVersion = await invoke("get_app_version");
+        const vvcVersion = await invoke("check_vvc");
+        document.getElementById("vvc-version").textContent = vvcVersion;
+        document.getElementById("app-version").textContent = appVersion;
+        try {
+          const ffmepgVersion = await invoke("get_ffmpeg_version");
+          document.getElementById("ffmpeg-version").textContent = ffmepgVersion;
+        } catch (e) {
+          document.getElementById("ffmpeg-version").textContent = e;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VVConvert</title>
+  <script type="module" src="/main.js" defer></script>
+</head>
+
+<body>
+  <div class="center">
+    <!-- <h1>Welcome to VVConvert!</h1>
+    <p>The All-in-one VVC (H.266) GUI Video Encoder / Decoder.</p>
+  </div> -->
+
+    <div class="container">
+      <h2>Select Video</h2>
+      <div class="row">
+
+        <div class="pickerTray">
+          <button id="filePickerButton">Pick File</button>
+        </div>
+      </div>
+      <form id="convert-form">
+        <h2>Encoder Settings</h2>
+        <div class="multicolumn">
+          <div class="settings-section">
+            <div class="setting-group">
+              <label for="resolution">Resolution:</label>
+              <select id="resolution">
+                <option value="1920x1080">1920x1080</option>
+                <option value="1280x720">1280x720</option>
+              </select>
+              <div class="dimensions">
+                <div class="dimension-item">
+                  <label for="width">Width:</label>
+                  <input id="width" type="text" placeholder="Width" autocomplete="off">
+                </div>
+                <div class="dimension-item">
+                  <label for="height">Height:</label>
+                  <input id="height" type="text" placeholder="Height" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="setting-group">
+                <label for="framerate">Framerate:</label>
+                <input type="text" id="framerate" autocomplete="off">
+                <p id="fractional-fr"></p>
+              </div>
+
+              <!-- <label for="bitrate">Bitrate (kbps):</label>
+              <input type="text" id="bitrate-kbps" autocomplete="off"> -->
+
+              <!-- New input for Mbps -->
+              <!-- <label for="bitrate-mbps">Bitrate (mbps):</label>
+              <input type="text" id="bitrate-mbps" autocomplete="off"> -->
+            </div>
+          </div>
+          <div class="settings-section">
+            <!-- Second Column -->
+
+            <div class="setting-group">
+              <label for="bitrate">Bitrate (kbps):</label>
+              <input type="text" id="bitrate-kbps" autocomplete="off">
+            </div>
+            <div class="setting-group">
+              <label for="bitrate-mbps">Bitrate (mbps):</label>
+              <input type="text" id="bitrate-mbps" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <a href="javascript:void(0)" class="toggleSpoiler" data-show="false">^ Advanced ^</a>
+        <div class="spoiler">
+          <div class="multicolumn">
+            <div class="settings-section">
+              <div class="setting-group">
+                <label for="threads">Threads:</label>
+                <input type="text" id="threads" value="16" autocomplete="off">
+              </div>
+              <div class="future setting-group">
+                <label for="profile">Profile:</label>
+                <select id="profile">
+                  <option value="baseline">Baseline</option>
+                  <option value="main">Main</option>
+                  <option value="high">High</option>
+                </select>
+              </div>
+            </div>
+            <div class="settings-section">
+              <!-- Second Column -->
+
+              <div class="future setting-group">
+                <label for="pass">Pass:</label>
+                <select id="pass">
+                  <option value="1">1 Pass</option>
+                  <option value="2">2 Pass</option>
+                </select>
+              </div>
+              <div class="future setting-group">
+                <label for="bit-depth">Bit Depth:</label>
+                <select id="bit-depth">
+                  <option value="8">8 bit</option>
+                  <option value="10">10 bit</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="container">
+      <video controls controlslist="nodownload" disablePictureInPicture></video>
+      <div id="vidinfo"></div>
+
+      <p id="greet-msg"></p>
+      <!-- <div class="column"> -->
+      <div class="buttons">
+        <!-- <button id="checkffmpeg">Check&nbsp;FFmpeg</button>
+        <button id="checkvvc">Check VVC</button> -->
+        <labeL>Output:</labeL>
+        <input id="out-path"></input>
+        <button type="submit" form="convert-form" id="convert">Convert</button>
+        <!-- <p id="vvencCmd"></p> -->
+      </div>
+
+      <div id="console">
+        <p>VVConvert <span id="app-version"></span></p>
+      </div>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="INSTALLDIR">
+      <Component Id="MyDllComponent" Guid="*">
+        <File Id="vvencDLL" Name="vvenc.dll" Source="..\..\..\..\lib\vvenc.dll" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

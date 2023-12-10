@@ -1,0 +1,12 @@
+{
+  "name": "vvconvert",
+  "private": true,
+  "version": "0.0.6",
+  "type": "module",
+  "scripts": {
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.5.6"
+  }
+}
