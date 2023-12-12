@@ -37,6 +37,7 @@
       "targets": "all",
       "identifier": "com.acarter.vvconvert",
       "publisher": "Alec Carter",
+      "copyright": "Copyright © 2023 Alec Carter",
       "category": "Utility",
       "icon": [
         "icons/32x32.png",

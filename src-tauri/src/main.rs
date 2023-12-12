@@ -92,10 +92,8 @@ async fn yuv_conversion(
 
     let ffmpeg_path = ffmpeg_utils::resolve_executable_path(&app_handle, window.clone(), "ffmpeg").await?;
 
-    // Create the command separately
     let mut cmd = Command::new(ffmpeg_path);
 
-    // Add arguments to the command
     cmd.arg("-i")
     .arg(&input_file)
     .arg("-pix_fmt")
@@ -104,16 +102,14 @@ async fn yuv_conversion(
     .arg("rawvideo")
     .arg("-");
 
-    // Apply creation flags conditionally for Windows
+    // No Terminal Flash on Widnows
     #[cfg(target_os = "windows")]
     {
         cmd.creation_flags(0x08000000);
     }
 
-    // Set the standard output to be piped
     cmd.stdout(Stdio::piped());
 
-    // Now use the `cmd` variable to spawn the process
     let mut ffmpeg_process = cmd.spawn()
         .map_err(|e| format!("Failed to start ffmpeg process: {}", e))?;
 
@@ -454,7 +450,7 @@ fn main() {
         .on_window_event(|event| {
             match event.event() {
                 tauri::WindowEvent::Focused(focused) => {
-                    // hide window whenever it loses focus
+                    // show ffmpeg window on main window focus
                     if *focused && event.window().get_window("ffmpeg").is_some() {
                         event
                             .window()
