@@ -5,6 +5,11 @@
   
   [![Static Badge](https://img.shields.io/badge/License-MIT-green)](/LICENSE.txt)
   [![Static Badge](https://img.shields.io/badge/Website-vvconvert.app-419fcc)](https://vvconvert.app)
+  [![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Falectr0%2FVVConvert%2Fmain%2Fsrc-tauri%2Ftauri.conf.json&query=%24.package.version&label=Version&color=white)](https://github.com/alectr0/VVConvert/releases)
+
+
+
+  
 </div>
 
 ## Overview
@@ -28,7 +33,7 @@ To build VVConvert, perform the following steps:
 git clone https://github.com/alectr0/VVConvert
 
 # Navigate and Build
-cd VVConvert-main/src-tauri
+cd VVConvert/src-tauri
 cargo build
 ```
 Tauri also supports building using npm. More info found [here](https://tauri.app/v1/guides/building/windows). 
