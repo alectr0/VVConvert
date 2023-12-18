@@ -28,7 +28,7 @@ To build VVConvert, perform the following steps:
 git clone https://github.com/alectr0/VVConvert
 
 # Navigate and Build
-cd VVConvert-master/src-tauri
+cd VVConvert-main/src-tauri
 cargo build
 ```
 Tauri also supports building using npm. More info found [here](https://tauri.app/v1/guides/building/windows). 
