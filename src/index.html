@@ -59,7 +59,6 @@
             </div>
           </div>
           <div class="settings-section">
-            <!-- Second Column -->
 
             <div class="setting-group">
               <label for="bitrate">Bitrate (kbps):</label>
@@ -68,6 +67,10 @@
             <div class="setting-group">
               <label for="bitrate-mbps">Bitrate (mbps):</label>
               <input type="text" id="bitrate-mbps" autocomplete="off">
+            </div>
+            <div class="setting-group">
+              <label for="qp">QP (0-63):</label>
+              <input type="number" id="qp" value="32" min="0" max="63" autocomplete="off">
             </div>
           </div>
         </div>
@@ -87,17 +90,6 @@
                   <option value="high">High</option>
                 </select>
               </div>
-            </div>
-            <div class="settings-section">
-              <!-- Second Column -->
-
-              <div class="future setting-group">
-                <label for="pass">Pass:</label>
-                <select id="pass">
-                  <option value="1">1 Pass</option>
-                  <option value="2">2 Pass</option>
-                </select>
-              </div>
               <div class="future setting-group">
                 <label for="bit-depth">Bit Depth:</label>
                 <select id="bit-depth">
@@ -105,6 +97,27 @@
                   <option value="10">10 bit</option>
                 </select>
               </div>
+            </div>
+            <div class="settings-section">
+              <div class="setting-group">
+                <label for="preset">Preset:</label>
+                <select id="preset">
+                  <option value="0">Faster</option>
+                  <option value="1">Fast</option>
+                  <option value="2">Medium</option>
+                  <option value="3">Slow</option>
+                  <option value="4">Slower</option>
+                  <!-- <option value="130">Medium (Low Decoding Energy)</option> -->
+                </select>
+              </div>
+              <div class="future setting-group">
+                <label for="pass">Pass:</label>
+                <select id="pass">
+                  <option value="1">1 Pass</option>
+                  <option value="2">2 Pass</option>
+                </select>
+              </div>
+              
             </div>
           </div>
         </div>

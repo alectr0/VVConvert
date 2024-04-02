@@ -13,9 +13,11 @@ let heightEl;
 let resolutionEl;
 let bitrateKbpsEl;
 let bitrateMbpsEl;
+let qpEl;
 let framerateEl;
 let fracFramerateEl;
-let threads;
+let threadsEl;
+let presetEl;
 let totalFrames;
 let vvencCmdEl;
 let outPathEl;
@@ -32,9 +34,11 @@ window.addEventListener("DOMContentLoaded", () => {
   resolutionEl = document.querySelector("#resolution");
   bitrateKbpsEl = document.querySelector("#bitrate-kbps");
   bitrateMbpsEl = document.querySelector("#bitrate-mbps");
+  qpEl = document.querySelector("#qp");
   framerateEl = document.querySelector("#framerate");
   fracFramerateEl = document.querySelector("#fractional-fr");
-  threads = document.querySelector("#threads");
+  threadsEl = document.querySelector("#threads");
+  presetEl = document.querySelector("#preset")
   vvencCmdEl = document.querySelector("#vvencCmd");
   outPathEl = document.querySelector("#out-path");
   appVersionEl = document.querySelector("#app-version");
@@ -80,6 +84,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // vvencSampleCMD();
   // document.querySelector("#preset").addEventListener('change', updateAndDisplayVvencCommandLine); // Assuming you have a dropdown for presets
 });
+
 
 function toggleAdvSettings(event) {
   let element = event.target;
@@ -181,10 +186,12 @@ async function convert() {
     width: parseInt(widthEl.value),
     height: parseInt(heightEl.value),
     bitrate: parseInt(bitrateKbpsEl.value * 1000),
+    qp: parseInt(qpEl.value),
     framerateNum: parseInt(numerator),
     framerateDenom: parseInt(denominator),
-    threads: parseInt(threads.value),
-    frames: parseInt(totalFrames)
+    threads: parseInt(threadsEl.value),
+    frames: parseInt(totalFrames),
+    preset: parseInt(presetEl.value)
   })
     .then((response) => {
       vvlogger(response);
@@ -215,9 +222,9 @@ async function getVideoMetadata(videoInFile) {
   const width = result.streams[0].width;
   const height = result.streams[0].height;
   const size = `${width}x${height}`;
-  const bitrate = result.streams[0].bit_rate;
+  const bitrate = result.format.bit_rate;
   const framerate = result.streams[0].r_frame_rate;
-  const duration = result.streams[0].duration;
+  const duration = result.format.duration;
 
   const [numerator, denominator] = framerate.split("/").map(Number);
   const calculatedFramerate = numerator / denominator;
@@ -231,7 +238,7 @@ async function getVideoMetadata(videoInFile) {
   resolutionEl.appendChild(customOption);
   customOption.selected = true;
   bitrateKbpsEl.value = bitrate / 1000;
-  framerateEl.value = calculatedFramerate.toFixed(2);
+  framerateEl.value = calculatedFramerate.toFixed(3);
   fracFramerateEl.innerText = framerate;
   widthEl.value = width;
   heightEl.value = height;

@@ -1,7 +1,3 @@
-// use tauri::window;
-
-use tauri::window;
-
 use serde_json::Value;
 
 use tauri::api::dialog::confirm;
@@ -10,7 +6,7 @@ use tauri::async_runtime::spawn;
 
 use futures::stream::{ FuturesUnordered, StreamExt };
 // use libc::c_int;
-use std::io::{ Read, Write };
+use std::io::{ Read };
 use std::path::{ Path, PathBuf };
 
 use tokio::process::Command;

@@ -82,16 +82,15 @@ async fn yuv_conversion(
     width: c_int,
     height: c_int,
     bitrate: c_int,
+    qp: c_int,
     framerate_num: c_int,
     framerate_denom: c_int,
     threads: c_int,
     frames: c_int,
+    preset: c_int, 
 ) -> std::result::Result<(), String> {
-    let qp: c_int = 36;
-    let preset: vvencPresetMode = vvencPresetMode_VVENC_FASTER;
 
     let ffmpeg_path = ffmpeg_utils::resolve_executable_path(&app_handle, window.clone(), "ffmpeg").await?;
-
     let mut cmd = Command::new(ffmpeg_path);
 
     cmd.arg("-i")
@@ -133,6 +132,7 @@ async fn yuv_conversion(
     params.m_numThreads = threads;
     params.m_FrameRate = framerate_num;
     params.m_FrameScale = framerate_denom;
+    params.m_RCNumPasses = 1;
 
     VVLogger::log(&window, format!("Encoding {} frames", frames));
     VVLogger::log(&window, "Begin Encoding..".to_string());

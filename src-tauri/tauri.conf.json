@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "VVConvert",
-    "version": "0.0.6"
+    "version": "0.0.7"
   },
   "tauri": {
     "allowlist": {
@@ -37,7 +37,7 @@
       "targets": "all",
       "identifier": "com.acarter.vvconvert",
       "publisher": "Alec Carter",
-      "copyright": "Copyright © 2023 Alec Carter",
+      "copyright": "Copyright © 2024 Alec Carter",
       "category": "Utility",
       "icon": [
         "icons/32x32.png",
@@ -48,13 +48,13 @@
       ],
       "deb": {
         "files": {
-          "/usr/lib/vvconvert/libvvenc.so.1.9.1": "lib/libvvenc.so.1.9.1",
-          "/usr/lib/vvconvert/libvvenc.so.1.9": "lib/libvvenc.so.1.9",
+          "/usr/lib/vvconvert/libvvenc.so.1.11.1": "lib/libvvenc.so.1.11.1",
+          "/usr/lib/vvconvert/libvvenc.so.1.11": "lib/libvvenc.so.1.11",
           "/usr/lib/vvconvert/libvvenc.so": "lib/libvvenc.so"
         }
       },
       "macOS": {
-        "frameworks": ["lib/libvvenc.1.9.1.dylib", "lib/libvvenc.1.9.dylib", "lib/libvvenc.dylib"]
+        "frameworks": ["lib/libvvenc.1.11.1.dylib", "lib/libvvenc.1.11.dylib", "lib/libvvenc.dylib"]
       },
       "windows": {
         "webviewInstallMode": {

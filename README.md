@@ -22,7 +22,7 @@ VVConvert is a cross-platform H.266 (VVC) video encoder. It support most input f
 - Cross-platform support (Windows, Linux, Mac).
 
 ## Build
-VVConvert leverages Rust for build process using Tauri. A working [Rust](https://www.rust-lang.org/) installation is required for building.
+VVConvert leverages Rust & Clang for build process using Tauri. A working [Rust](https://www.rust-lang.org/) & [Clang](https://clang.llvm.org/) installation is required for building.
 
 ### How to build using Tauri & Rust?
 
@@ -47,6 +47,6 @@ Tauri also supports building using npm. More info found [here](https://tauri.app
 
 ## License
 This project utilizes the VVenC library, which is licensed under the BSD 2-Clause License
-Please refer to the LICENSE.txt file for license information.
+Please refer to the [LICENSE.txt](/LICENSE.txt) file for license information.
 
-Copyright (c) 2023, Alec Carter
+Copyright (c) 2024, Alec Carter

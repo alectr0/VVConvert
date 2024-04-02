@@ -6,7 +6,7 @@ the Software are granted under this license.
 
 The Clear BSD License
 
-Copyright (c) 2019-2023, Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V. & The VVenC Authors.
+Copyright (c) 2019-2024, Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V. & The VVenC Authors.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -42,15 +42,15 @@ POSSIBILITY OF SUCH DAMAGE.
 
 #if !defined( VVENC_VERSION )
 
-#define VVENC_VERSION "1.8.0"
+#define VVENC_VERSION "1.11.1"
 
 #define VVENC_VERSION_MAJOR 1
-#define VVENC_VERSION_MINOR 8
-#define VVENC_VERSION_PATCH 0
+#define VVENC_VERSION_MINOR 11
+#define VVENC_VERSION_PATCH 1
 
 #ifdef _WIN32
-#define VVENC_VS_VERSION      1,8,0
-#define VVENC_VS_VERSION_STR "1.8.0"
+#define VVENC_VS_VERSION      1,11,1
+#define VVENC_VS_VERSION_STR "1.11.1"
 #endif
 
 #endif
