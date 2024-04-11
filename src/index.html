@@ -18,7 +18,6 @@
     <div class="container">
       <h2>Select Video</h2>
       <div class="row">
-
         <div class="pickerTray">
           <button id="filePickerButton">Pick File</button>
         </div>
@@ -61,15 +60,23 @@
           <div class="settings-section">
 
             <div class="setting-group">
-              <label for="bitrate">Bitrate (kbps):</label>
+              <label for="bitrate">Bitrate (kbps):</label>              
               <input type="text" id="bitrate-kbps" autocomplete="off">
             </div>
             <div class="setting-group">
-              <label for="bitrate-mbps">Bitrate (mbps):</label>
+              <div class="tooltip">
+                <label for="bitrate-mbps">Bitrate (mbps):</label>
+                <span class="tooltiptext">0: use fix qp<br>>0: enable rate control</span>
+                <span class="infoIcon">&#9432;</span>
+              </div>
               <input type="text" id="bitrate-mbps" autocomplete="off">
             </div>
             <div class="setting-group">
-              <label for="qp">QP (0-63):</label>
+              <div class="tooltip">
+                <label for="qp">QP (0-63):</label>
+                <span class="tooltiptext">QP value of key-picture (variable if bitrate is not 0)</span>
+                <span class="infoIcon">&#9432;</span>
+              </div>
               <input type="number" id="qp" value="32" min="0" max="63" autocomplete="off">
             </div>
           </div>
@@ -79,8 +86,12 @@
           <div class="multicolumn">
             <div class="settings-section">
               <div class="setting-group">
-                <label for="threads">Threads:</label>
-                <input type="text" id="threads" value="16" autocomplete="off">
+                <div class="tooltip">
+                  <label for="threads">Threads:</label>
+                  <span class="tooltiptext">Warning! Limited to available cores</span>
+                  <span class="infoIcon">&#9432;</span>
+                </div>
+                <input type="text" id="threads" value="8" autocomplete="off">
               </div>
               <div class="future setting-group">
                 <label for="profile">Profile:</label>
@@ -117,7 +128,6 @@
                   <option value="2">2 Pass</option>
                 </select>
               </div>
-              
             </div>
           </div>
         </div>

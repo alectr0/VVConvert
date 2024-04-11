@@ -270,24 +270,27 @@ video::-webkit-media-controls-fullscreen-button {
 }
 
 .spoiler {
-  overflow: hidden;
   background: #f5f5f5;
 }
 
 .spoiler > div {
   -webkit-transition: all 0.2s ease;
-  -moz-transition: margin 0.2s ease;
+  -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
-  transition: margin 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .toggleSpoiler[data-show="true"] + .spoiler > div {
   margin-top: 0;
+  transform: scaleY(100%);
   padding: 5px;
 }
 
 .toggleSpoiler[data-show="false"] + .spoiler > div {
-  margin-top: -100%;
+  transform: scaleY(0%);
+}
+.toggleSpoiler[data-show="false"] + .spoiler {
+  visibility: hidden;
 }
 
 #vvencCmd {
@@ -341,6 +344,34 @@ video::-webkit-media-controls-fullscreen-button {
 
 .future * {
   pointer-events: none;
+}
+
+.tooltip {
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+  border-radius: 6px;
+  padding: 5px 5px;
+  position: absolute;
+  z-index: 9;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 
 @media (prefers-color-scheme: dark) {
